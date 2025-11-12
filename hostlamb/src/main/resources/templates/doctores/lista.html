@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Lista de Doctores</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: "Segoe UI", sans-serif; }
+
+        body { background: #f4f6fb; color: #333; }
+
+        .container {
+            max-width: 1200px;
+            margin: 30px auto;
+            padding: 30px;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid #ff8c00;
+        }
+
+        .header h1 {
+            color: #ff8c00;
+            font-size: 2em;
+        }
+
+        .btn {
+            padding: 12px 25px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-block;
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #ff8c00, #ffb880);
+            color: white;
+        }
+
+        .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 5px 15px rgba(255,140,0,0.3); }
+
+        .btn-edit {
+            background: #0077b6;
+            color: white;
+            padding: 8px 15px;
+            font-size: 0.9em;
+        }
+
+        .btn-delete {
+            background: #e60023;
+            color: white;
+            padding: 8px 15px;
+            font-size: 0.9em;
+        }
+
+        .btn-back {
+            background: #666;
+            color: white;
+            margin-bottom: 20px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th {
+            background: linear-gradient(135deg, #ff8c00, #ffb880);
+            color: white;
+            padding: 15px;
+            text-align: left;
+            font-weight: 600;
+        }
+
+        td {
+            padding: 12px 15px;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        tr:hover { background: #f8f9fa; }
+
+        .actions { display: flex; gap: 10px; }
+
+        .empty-state {
+            text-align: center;
+            padding: 50px;
+            color: #999;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="/menu" class="btn btn-back">
+            <i class="fas fa-arrow-left"></i> Volver al Menu
+        </a>
+
+        <div class="header">
+            <h1><i class="fas fa-user-md"></i> Gestion de Doctores</h1>
+            <a href="/doctores/nuevo" class="btn btn-primary">
+                <i class="fas fa-plus"></i> Nuevo Doctor
+            </a>
+        </div>
+
+        <div th:if="${doctores.isEmpty()}" class="empty-state">
+            <i class="fas fa-inbox" style="font-size: 3em; margin-bottom: 15px;"></i>
+            <p>No hay doctores registrados</p>
+        </div>
+
+        <table th:if="${!doctores.isEmpty()}">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Nombres</th>
+                    <th>Apellidos</th>
+                    <th>Especialidad</th>
+                    <th>Licencia</th>
+                    <th>Telefono</th>
+                    <th>Consultorio</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="doctor : ${doctores}">
+                    <td th:text="${doctor.id}"></td>
+                    <td th:text="${doctor.nombres}"></td>
+                    <td th:text="${doctor.apellidos}"></td>
+                    <td th:text="${doctor.especialidad}"></td>
+                    <td th:text="${doctor.numeroLicencia}"></td>
+                    <td th:text="${doctor.telefono}"></td>
+                    <td th:text="${doctor.consultorio}"></td>
+                    <td>
+                        <div class="actions">
+                            <a th:href="@{/doctores/editar/{id}(id=${doctor.id})}" class="btn btn-edit">
+                                <i class="fas fa-edit"></i> Editar
+                            </a>
+                            <a th:href="@{/doctores/eliminar/{id}(id=${doctor.id})}"
+                               class="btn btn-delete"
+                               onclick="return confirm('Esta seguro de eliminar este doctor?')">
+                                <i class="fas fa-trash"></i> Eliminar
+                            </a>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

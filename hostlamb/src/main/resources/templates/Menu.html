@@ -1,8 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Menu Principal</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: "Poppins", sans-serif; }
 
@@ -211,12 +212,12 @@
 <aside class="sidebar">
     <h2>B-Learning</h2>
     <ul>
-        <li><i class="fas fa-home"></i><span>Inicio</span></li>
-        <li><i class="fas fa-user-injured"></i><span>Pacientes</span></li>
-        <li><i class="fas fa-user-md"></i><span>Doctores</span></li>
-        <li><i class="fas fa-ambulance"></i><span>Emergencias</span></li>
-        <li><i class="fas fa-cog"></i><span>Configuración</span></li>
-        <li><i class="fas fa-sign-out-alt"></i><span>Cerrar Sesión</span></li>
+        <li onclick="window.location.href='/menu'"><i class="fas fa-home"></i><span>Inicio</span></li>
+        <li onclick="window.location.href='/pacientes'"><i class="fas fa-user-injured"></i><span>Pacientes</span></li>
+        <li onclick="window.location.href='/doctores'"><i class="fas fa-user-md"></i><span>Doctores</span></li>
+        <li onclick="window.location.href='/emergencias'"><i class="fas fa-ambulance"></i><span>Emergencias</span></li>
+        <li onclick="window.location.href='/menu'"><i class="fas fa-cog"></i><span>Configuración</span></li>
+        <li onclick="window.location.href='/login'"><i class="fas fa-sign-out-alt"></i><span>Cerrar Sesión</span></li>
     </ul>
 </aside>
 
@@ -239,21 +240,21 @@
                 <i class="fas fa-user-injured" style="color:#4f9aff;"></i>
                 <h3>Registro de Pacientes</h3>
                 <p>Gestione la información completa de los pacientes y su historial médico.</p>
-                <button class="btn-pacientes"><i class="fas fa-users"></i> Gestionar Pacientes</button>
+                <button class="btn-pacientes" onclick="window.location.href='/pacientes'"><i class="fas fa-users"></i> Gestionar Pacientes</button>
             </div>
 
             <div class="card">
                 <i class="fas fa-user-md" style="color:#ff8c00;"></i>
                 <h3>Registro de Doctores</h3>
                 <p>Administre las especialidades, licencias y horarios del personal médico.</p>
-                <button class="btn-doctores"><i class="fas fa-stethoscope"></i> Gestionar Doctores</button>
+                <button class="btn-doctores" onclick="window.location.href='/doctores'"><i class="fas fa-stethoscope"></i> Gestionar Doctores</button>
             </div>
 
             <div class="card">
                 <i class="fas fa-ambulance" style="color:#e60023;"></i>
                 <h3>Registro de Emergencias</h3>
                 <p>Monitoree y registre emergencias médicas con seguimiento en tiempo real.</p>
-                <button class="btn-emergencias"><i class="fas fa-exclamation-triangle"></i> Gestionar Emergencias</button>
+                <button class="btn-emergencias" onclick="window.location.href='/emergencias'"><i class="fas fa-exclamation-triangle"></i> Gestionar Emergencias</button>
             </div>
         </div>
     </section>
