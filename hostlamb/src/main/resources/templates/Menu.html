@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: "Poppins", sans-serif; }
+
+        body {
+          background-color: #f4f6fb;
+          color: #333;
+          display: flex;
+          height: 100vh;
+          overflow: hidden;
+        }
+
+        /* ===== MENÚ LATERAL ===== */
+        .sidebar {
+          width: 250px;
+          background: linear-gradient(180deg, #0b3d74, #1565c0);
+          color: white;
+          display: flex;
+          flex-direction: column;
+          padding-top: 20px;
+          position: fixed;
+          left: 0;
+          top: 0;
+          bottom: 0;
+          transition: width 0.3s ease;
+        }
+
+        .sidebar h2 {
+          text-align: center;
+          margin-bottom: 30px;
+          font-size: 1.3em;
+          font-weight: 600;
+          letter-spacing: 1px;
+        }
+
+        .sidebar ul {
+          list-style: none;
+          padding: 0 10px;
+        }
+
+        .sidebar ul li {
+          padding: 12px 15px;
+          margin-bottom: 5px;
+          border-radius: 8px;
+          display: flex;
+          align-items: center;
+          gap: 10px;
+          cursor: pointer;
+          transition: background 0.3s ease;
+        }
+
+        .sidebar ul li:hover {
+          background-color: rgba(255,255,255,0.2);
+        }
+
+        .sidebar ul li i {
+          font-size: 1.2em;
+        }
+
+        /* ===== CONTENIDO PRINCIPAL ===== */
+        .main-content {
+          margin-left: 250px;
+          flex: 1;
+          display: flex;
+          flex-direction: column;
+          overflow-y: auto;
+        }
+
+        /* ===== ENCABEZADO ===== */
+        header {
+          background: linear-gradient(90deg, #0b3d74, #1976d2);
+          color: white;
+          padding: 18px 25px;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+        }
+
+        header h1 {
+          font-size: 1.5em;
+          display: flex;
+          align-items: center;
+          gap: 10px;
+        }
+
+        header .user {
+          display: flex;
+          align-items: center;
+          gap: 10px;
+          cursor: pointer;
+        }
+
+        header .user img {
+          width: 40px;
+          height: 40px;
+          border-radius: 50%;
+          background-color: white;
+        }
+
+        /* ===== SECCIÓN PRINCIPAL ===== */
+        .dashboard {
+          padding: 30px;
+          text-align: center;
+        }
+
+        .dashboard h2 {
+          color: #0b3d74;
+          font-size: 1.8em;
+          margin-bottom: 8px;
+        }
+
+        .dashboard p {
+          color: #666;
+          margin-bottom: 35px;
+        }
+
+        .cards {
+          display: flex;
+          justify-content: center;
+          flex-wrap: wrap;
+          gap: 25px;
+        }
+
+        .card {
+          background: white;
+          width: 300px;
+          border-radius: 14px;
+          box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+          padding: 25px;
+          text-align: center;
+          transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .card:hover {
+          transform: translateY(-6px);
+          box-shadow: 0 10px 18px rgba(0,0,0,0.15);
+        }
+
+        .card i {
+          font-size: 2.8em;
+          margin-bottom: 15px;
+        }
+
+        .card h3 {
+          margin-bottom: 10px;
+          color: #222;
+          font-size: 1.3em;
+        }
+
+        .card p {
+          font-size: 0.9em;
+          color: #555;
+          margin-bottom: 20px;
+        }
+
+        .card button {
+          border: none;
+          padding: 10px 20px;
+          border-radius: 6px;
+          color: white;
+          font-weight: 600;
+          cursor: pointer;
+          font-size: 0.9em;
+          transition: background-color 0.3s ease;
+        }
+
+        .btn-pacientes {
+          background: linear-gradient(90deg, #4f9aff, #3950ff);
+        }
+
+        .btn-doctores {
+          background: linear-gradient(90deg, #ffb880, #ff8c00);
+        }
+
+        .btn-emergencias {
+          background: linear-gradient(90deg, #ff6b6b, #e60023);
+        }
+
+        /* ===== RESPONSIVO ===== */
+        @media (max-width: 768px) {
+          .sidebar {
+            width: 70px;
+          }
+
+          .sidebar h2, .sidebar ul li span {
+            display: none;
+          }
+
+          .main-content {
+            margin-left: 70px;
+          }
+
+          header h1 {
+            font-size: 1.2em;
+          }
+
+          .card {
+            width: 90%;
+          }
+        }
+    </style>
+</head>
+<body>
+
+<!-- ===== MENÚ LATERAL ===== -->
+<aside class="sidebar">
+    <h2>B-Learning</h2>
+    <ul>
+        <li><i class="fas fa-home"></i><span>Inicio</span></li>
+        <li><i class="fas fa-user-injured"></i><span>Pacientes</span></li>
+        <li><i class="fas fa-user-md"></i><span>Doctores</span></li>
+        <li><i class="fas fa-ambulance"></i><span>Emergencias</span></li>
+        <li><i class="fas fa-cog"></i><span>Configuración</span></li>
+        <li><i class="fas fa-sign-out-alt"></i><span>Cerrar Sesión</span></li>
+    </ul>
+</aside>
+
+<!-- ===== CONTENIDO PRINCIPAL ===== -->
+<div class="main-content">
+    <header>
+        <h1><i class="fas fa-hospital-user"></i> Sistema Médico</h1>
+        <div class="user">
+            <img src="https://cdn-icons-png.flaticon.com/512/1946/1946429.png" alt="usuario">
+            <span>Asistente Administrativo</span>
+        </div>
+    </header>
+
+    <section class="dashboard">
+        <h2>Panel de Gestión Médica</h2>
+        <p>Administre pacientes, doctores y emergencias desde un solo lugar.</p>
+
+        <div class="cards">
+            <div class="card">
+                <i class="fas fa-user-injured" style="color:#4f9aff;"></i>
+                <h3>Registro de Pacientes</h3>
+                <p>Gestione la información completa de los pacientes y su historial médico.</p>
+                <button class="btn-pacientes"><i class="fas fa-users"></i> Gestionar Pacientes</button>
+            </div>
+
+            <div class="card">
+                <i class="fas fa-user-md" style="color:#ff8c00;"></i>
+                <h3>Registro de Doctores</h3>
+                <p>Administre las especialidades, licencias y horarios del personal médico.</p>
+                <button class="btn-doctores"><i class="fas fa-stethoscope"></i> Gestionar Doctores</button>
+            </div>
+
+            <div class="card">
+                <i class="fas fa-ambulance" style="color:#e60023;"></i>
+                <h3>Registro de Emergencias</h3>
+                <p>Monitoree y registre emergencias médicas con seguimiento en tiempo real.</p>
+                <button class="btn-emergencias"><i class="fas fa-exclamation-triangle"></i> Gestionar Emergencias</button>
+            </div>
+        </div>
+    </section>
+</div>
+
+</body>
+</html>
